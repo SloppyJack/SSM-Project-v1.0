@@ -26,15 +26,15 @@ public class FileUploadUtil {
      */
     public static String uploadFile(ImageHolder imageHolder, Shop shop){
         try{
-            String objectName = ConfigureConstant.ossObjectName+"/shop"+shop.getShopId()+"/"+ImageUtil.getRandomFileName()+"."+
+            String objectName = ConfigureConstant.ossObjectName+"/shop"+shop.getShopId()+"/"+ImageUtil.getRandomFileName()+
                     ImageUtil.getFileExtension(imageHolder.getImageName());
             // 创建OSSClient实例。
-            OSS ossClient = new OSSClientBuilder().build(PathConstant.ossRemoteImageUrl,
+            OSS ossClient = new OSSClientBuilder().build(PathConstant.ossWriteImageUrl,
                     ConfigureConstant.ossAccessKeyId, ConfigureConstant.ossAccessKeySecret);
             ossClient.putObject(ConfigureConstant.ossBucketName, objectName, imageHolder.getImage());
             // 关闭OSSClient。
             ossClient.shutdown();
-            return PathConstant.ossRemoteImageUrl+objectName;
+            return PathConstant.ossReadImageUrl+objectName;
         }catch (Exception e){
             e.printStackTrace();
             throw new RuntimeException("上传到oss出错："+e.getMessage());

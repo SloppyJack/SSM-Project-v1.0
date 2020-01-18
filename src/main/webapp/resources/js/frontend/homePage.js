@@ -13,18 +13,18 @@ function initPageOfFrontHomePage(){
                 var images = [];
                 //遍历头条列表，并拼接处轮播图组
                 headNewsList.map(function (value, index) {
-                    swiperHtml +=
+                    /*swiperHtml +=
                         '<div class = "swiper-slide">' +
                             '<a href="'+ value.newsLink +'"external>' +
                                 '<img class="banner-img" style="width:50%;height:50%" src="'+ value.newsImg +'"alt="'+ value.newsName +'">' +
                             '</a>' +
-                        '</div>';
+                        '</div>';*/
                     var temp = {
                         tagName: "a",
-                        attrs: {
+                        /*attrs: {
                             href: value.newsLink,
                             style: "width:100%; height: 100%"
-                        },
+                        },*/
                         children: [
                             {
                                 tagName: "img",
@@ -91,11 +91,10 @@ function initPageOfFrontHomePage(){
                     }
                 ];*/
                 //由于sui的路由有缓存功能，所以此处须判断
-                if ($('#root').html() === '') {
-                    //将jq对象转换为Dom对象
-                    var container = $('#root').get(0);
-                    var awesomeSlider = new AwesomeSlider(images,container);
-                }
+                $('#root').html('');
+                //将jq对象转换为Dom对象
+                var container = $('#root').get(0);
+                var awesomeSlider = new AwesomeSlider(images,container);
             }
             //获取后台传过来的大类列表
             var shopCategoryList = data.shopCategoryList;

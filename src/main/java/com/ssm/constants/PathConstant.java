@@ -11,7 +11,9 @@ public class PathConstant {
     public static final String winLocalImagePath = "D:/workspace/image";
     //linux中本地部署的图片路径
     public static final String linuxLocalImagePath = "/home/workspace/image";
-    //oss中图片的地址
-    public static final String ossRemoteImageUrl = "https://oss-cn-shenzhen.aliyuncs.com/";
+    //oss中图片写的地址
+    public static final String ossWriteImageUrl = "https://oss-cn-shenzhen.aliyuncs.com/";
+    //oss图片读的地址
+    public static final String ossReadImageUrl = "https://ssm-project.oss-cn-shenzhen.aliyuncs.com/";
 
 }
