@@ -5,6 +5,8 @@ window.onload= function () {
             initPageOfFrontHomePage();
         }else if(pageId === "pageFrontShopList"){
             initPageOfFrontShopList();
+        }else if(pageId === "pageFrontShopDetail"){
+            initPageOfFrontShopDetail();
         }
     });
 

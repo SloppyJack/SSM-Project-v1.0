@@ -84,7 +84,7 @@ function initPageOfFrontShopList() {
                        '                        </div>' +
                        '                        <div class="card-footer">' +
                        '                            <span>'+ formatTime(item.createTime,'Y-M-D h:m:s') +'</span>' +
-                       '                            <span>5 评论</span>' +
+                       '                            <span><a href="shopDetail?shopId='+item.shopId+'">查看详情</a></span>' +
                        '                        </div>' +
                        '                    </div>';
                });
