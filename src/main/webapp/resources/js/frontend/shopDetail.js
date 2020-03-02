@@ -87,7 +87,7 @@ function initPageOfFrontShopDetail(){
                         '                        </div>' +
                         '                        <div class="card-footer">' +
                         '                            <span>'+ formatTime(item.createTime,'Y-M-D h:m:s') +'</span>' +
-                        '                            <span><a href="shopDetail?shopId='+item.shopId+'">查看详情</a></span>' +
+                        '                            <span><button onclick="buyProduct('+ item.productId +')" class="button">购买</button></span>' +
                         '                        </div>' +
                         '                    </div>';
                 });
@@ -166,4 +166,12 @@ function initPageOfFrontShopDetail(){
             }
         });
     }
+}
+
+/**
+ * 购买商品
+ * @param productId
+ */
+function buyProduct(productId) {
+    $.toast('购买功能正在开发中~');
 }
