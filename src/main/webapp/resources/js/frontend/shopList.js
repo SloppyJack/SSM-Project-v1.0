@@ -16,7 +16,7 @@ function initPageOfFrontShopList() {
     var parentId = getQueryString('parentId');
     //渲染出店铺类别列表及区域列表供搜索
     getSearchDivData();
-    //预先加载10条店铺信息
+    //预先加载5条店铺信息
     addItems(pageSize,pageNum,true);
 
     function getSearchDivData() {

@@ -12,73 +12,56 @@
     <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm-extend.css">
 </head>
 <body>
-<header class="bar bar-nav">
-    <h1 class='title'>店铺详情</h1>
-</header>
 <div class="page-group">
     <div class="page page-current" id="pageFrontShopDetail">
-        <div class="content infinite-scroll infinite-scroll-bottom" data-distance="50">
-            <div class="card demo-card-header-pic">
-                <div valign="bottom" class="card-header color-white no-border no-padding">
-                    <img class='card-cover' src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" alt="">
-                </div>
-                <div class="card-content">
-                    <div class="card-content-inner">
-                        <p class="color-gray">发表于 2015/01/15</p>
-                        <p>此处是内容...</p>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="link">赞</a>
-                    <a href="#" class="link">更多</a>
+        <header class="bar bar-nav">
+            <h1 id="shop_name" class='title'></h1>
+        </header>
+        <div class="bar bar-header-secondary">
+            <div class="searchbar">
+                <a class="searchbar-cancel">取消</a>
+                <div class="search-input">
+                    <label class="icon icon-search" for="search_input"></label>
+                    <input type="search" id='search_input' placeholder='请输入店铺名称的关键字...'/>
                 </div>
             </div>
-            <div class="content-block">
-                <div class="list-block">
-                    <ul>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-title label">查找条件</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="请点击选择" id="picker_display" value="" readonly="">
-                                    <input type="hidden" id="picker_val" value="" readonly="">
-                                </div>
+        </div>
+        <div class="content infinite-scroll infinite-scroll-bottom">
+        <!-- 店铺详情图片 -->
+        <div class="card demo-card-header-pic">
+            <div valign="bottom" class="card-header color-white no-border no-padding">
+                <img id="shop_img" class='card-cover' src="">
+            </div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <p id="create_time" class="color-gray"></p>
+                    <p id="shop_desc"></p>
+                </div>
+            </div>
+        </div>
+        <!-- 商品类别列表展示区 -->
+        <div class="content-block">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title label">查找条件</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="请点击选择" id="picker_display" value="" readonly="">
+                                <input type="hidden" id="picker_val" value="" readonly="">
                             </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="list-block" id="shop_content">
-                <!--<div class="card">
-                    <div class="card-header">新的公布:</div>
-                    <div class="card-content">
-                        <div class="list-block media-list">
-                            <ul>
-                                <li class="item-content">
-                                    <div class="item-media">
-                                        <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44">
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title">标题</div>
-                                        </div>
-                                        <div class="item-subtitle">子标题</div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <span>2015/01/15</span>
-                        <span>5 评论</span>
-                    </div>
-                </div>-->
-                <!-- 加载提示符 -->
+                    </li>
+
+                </ul>
+            </div>
+            <div class="list-block" id="product_content">
             </div>
             <div class="infinite-scroll-preloader">
                 <div class="preloader"></div>
             </div>
+        </div>
+        </div>
         </div>
     </div>
 </div>
