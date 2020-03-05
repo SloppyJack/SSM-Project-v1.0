@@ -1,8 +1,15 @@
 package com.ssm.web.user;
 
+import com.ssm.dto.CodeMsg;
 import com.ssm.dto.Result;
+import com.ssm.entity.LocalAuth;
+import com.ssm.entity.PersonInfo;
+import com.ssm.service.LocalAuthService;
+import com.ssm.service.PersonInfoService;
 import com.ssm.util.HttpServletRequestUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +27,11 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 public class LoginController {
+    @Autowired
+    private PersonInfoService personInfoService;
+    @Autowired
+    private LocalAuthService localAuthService;
+
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     @ResponseBody
     private Result login(HttpServletRequest request) {
@@ -28,7 +40,13 @@ public class LoginController {
         String psw = HttpServletRequestUtil.getString(request,"psw");
         String loginName = HttpServletRequestUtil.getString(request,"loginName");
         //todo 完善登录代码
-        return null;
-
+        PersonInfo personInfo = personInfoService.queryPersonInfoByLoginName(loginName);
+        if (personInfo.getUserId() != null){
+            LocalAuth localAuth = localAuthService.queryLocalAuthByUserId(personInfo.getUserId());
+           if (psw.equals(localAuth.getPassword())){
+               return Result.success();
+           }
+        }
+        return Result.error(CodeMsg.USER_LOGIN_FAILED);
     }
 }

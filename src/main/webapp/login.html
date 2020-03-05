@@ -31,7 +31,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">姓名</div>
                                         <div class="item-input">
-                                            <input type="text" placeholder="Your name">
+                                            <input id="login_name" type="text" placeholder="Your name">
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                     <div class="item-inner">
                                         <div class="item-title label">密码</div>
                                         <div class="item-input">
-                                            <input id="login" type="password" placeholder="Password" class="">
+                                            <input id="password" type="password" placeholder="Password" class="">
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,21 @@
     <script type='text/javascript' src='./resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
     <script>
         $('#login').click(function () {
-
+            $.ajax({
+                url:'/user/login',
+                type:'post',
+                data:{
+                    loginName:$('#login_name').val(),
+                    psw:$('#password').val()
+                },
+                dataType:'json',
+                success:function (result) {
+                    if (result.retCode==0){
+                        handleList(result.data.shopList);
+                        handleUser(result.data.user);
+                    }
+                }
+            });
         });
     </script>
 </body>

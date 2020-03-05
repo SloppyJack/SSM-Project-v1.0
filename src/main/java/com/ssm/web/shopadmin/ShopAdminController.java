@@ -62,4 +62,9 @@ public class ShopAdminController {
     public String productOperation(){
         return "pages/shop/productOperation";
     }
+
+    @RequestMapping(value = "/index")
+    public String index(){
+        return "pages/shop/index";
+    }
 }

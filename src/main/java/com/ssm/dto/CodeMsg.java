@@ -54,6 +54,12 @@ public class CodeMsg {
     public static CodeMsg PRODUCT_UPDATE_FAILED = new CodeMsg(102004,"商品不显示");
     public static CodeMsg PRODUCTID_IS_NULL = new CodeMsg(102005,"商品ID为空");
 
+    //登录业务，格式：103 xxx
+    public static CodeMsg ADMIN_LOGIN_SUCCESS = new CodeMsg(103001,"管理员登录成功");
+    public static CodeMsg USER_LOGIN_SUCCESS = new CodeMsg(103002,"用户登录成功");
+    public static CodeMsg USER_LOGIN_FAILED = new CodeMsg(103003,"用户登录失败");
+    public static CodeMsg USER_LOGIN_WITHOUT_PERMISSION = new CodeMsg(103004,"该用户没有权限");
+
     private CodeMsg(int retCode, String message) {
         this.retCode = retCode;
         this.message = message;
