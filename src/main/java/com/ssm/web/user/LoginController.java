@@ -32,20 +32,20 @@ public class LoginController {
     @Autowired
     private LocalAuthService localAuthService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     private Result login(HttpServletRequest request) {
         Map<String,Object> modelMap = new HashMap<>();
         //获取parentId
         String psw = HttpServletRequestUtil.getString(request,"psw");
         String loginName = HttpServletRequestUtil.getString(request,"loginName");
-        //todo 完善登录代码
-        PersonInfo personInfo = personInfoService.queryPersonInfoByLoginName(loginName);
-        if (personInfo.getUserId() != null){
-            LocalAuth localAuth = localAuthService.queryLocalAuthByUserId(personInfo.getUserId());
-           if (psw.equals(localAuth.getPassword())){
-               return Result.success();
-           }
+        LocalAuth localAuth = localAuthService.queryLocalAuthByUserName(loginName);
+        if (localAuth != null && localAuth.getPersonInfo() != null && localAuth.getPersonInfo().getUserId() != null &&
+                loginName.equals(localAuth.getUserName()) && psw.equals(localAuth.getPassword())){
+            PersonInfo user = personInfoService.queryPersonInfoByUserId(localAuth.getPersonInfo().getUserId());
+            request.getSession().setAttribute("user",user);
+            modelMap.put("redirectUrl","shopAdmin/index");
+            return Result.success(modelMap);
         }
         return Result.error(CodeMsg.USER_LOGIN_FAILED);
     }

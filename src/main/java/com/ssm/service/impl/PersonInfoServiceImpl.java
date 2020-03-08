@@ -17,7 +17,7 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     @Autowired
     private PersonInfoDao personInfoDao;
     @Override
-    public PersonInfo queryPersonInfoByLoginName(String loginName) {
-        return personInfoDao.queryPersonInfoByLoginName(loginName);
+    public PersonInfo queryPersonInfoByUserId(Long userId) {
+        return personInfoDao.queryPersonInfoByUserId(userId);
     }
 }

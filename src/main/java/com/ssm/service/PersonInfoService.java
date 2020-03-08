@@ -10,5 +10,5 @@ import com.ssm.entity.PersonInfo;
  **/
 public interface PersonInfoService {
 
-    PersonInfo queryPersonInfoByLoginName(String loginName);
+    PersonInfo queryPersonInfoByUserId(Long userId);
 }

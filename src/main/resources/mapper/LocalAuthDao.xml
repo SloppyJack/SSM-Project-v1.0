@@ -19,7 +19,7 @@
         </association>
     </resultMap>
 
-    <select id="queryLocalAuthByUserId" resultMap="localAuthMap" resultType="com.ssm.entity.LocalAuth">
+    <select id="queryLocalAuthByUserId" resultMap="localAuthMap">
         select
             la.local_auth_id,
             la.user_name,
@@ -30,5 +30,20 @@
             pi.name
         from tb_local_auth la,tb_person_info pi
         where la.user_id = #{userId}
+    </select>
+
+    <select id="queryLocalAuthByUserName" resultMap="localAuthMap">
+        select
+            la.local_auth_id,
+            la.user_name,
+            la.password,
+            la.create_time,
+            la.last_edit_time,
+            pi.user_id,
+            pi.name
+        from tb_local_auth la,tb_person_info pi
+        where
+            la.user_id = pi.user_id
+            and la.user_name = #{userName}
     </select>
 </mapper>

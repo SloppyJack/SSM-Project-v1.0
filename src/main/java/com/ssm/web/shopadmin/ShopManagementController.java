@@ -96,10 +96,9 @@ public class ShopManagementController {
     private Result getShopList(HttpServletRequest request){
         Map<String,Object> modelMap = new HashMap();
         PersonInfo user = new PersonInfo();
-        user.setUserId(1L);
-        user.setName("test");
-        request.getSession().setAttribute("user",user);
         user = (PersonInfo)request.getSession().getAttribute("user");
+        if (user == null || user.getUserId()== null)
+            return Result.error(CodeMsg.NULL_SHOPLIST);
         try{
             Shop shopCondition = new Shop();
             shopCondition.setOwner(user);

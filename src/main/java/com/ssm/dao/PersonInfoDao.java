@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
 public interface PersonInfoDao {
 
     /**
-     * 根据登录名查询用户
-     * @param loginName
+     * 根据userId查询用户
+     * @param userId
      * @return
      */
-    PersonInfo queryPersonInfoByLoginName(String loginName);
+    PersonInfo queryPersonInfoByUserId(Long userId);
 }

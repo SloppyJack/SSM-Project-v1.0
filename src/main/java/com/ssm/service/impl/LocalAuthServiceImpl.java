@@ -20,4 +20,9 @@ public class LocalAuthServiceImpl implements LocalAuthService {
     public LocalAuth queryLocalAuthByUserId(Long userId) {
         return localAuthDao.queryLocalAuthByUserId(userId);
     }
+
+    @Override
+    public LocalAuth queryLocalAuthByUserName(String userName) {
+        return localAuthDao.queryLocalAuthByUserName(userName);
+    }
 }

@@ -51,7 +51,7 @@
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-100"><a href="#" class="button button-big button-fill button-success">登录</a></div>
+                            <div class="col-100"><a id="login" class="button button-big button-fill button-success">登录</a></div>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
     <script>
         $('#login').click(function () {
             $.ajax({
-                url:'/user/login',
+                url:'user/login',
                 type:'post',
                 data:{
                     loginName:$('#login_name').val(),
@@ -119,8 +119,9 @@
                 dataType:'json',
                 success:function (result) {
                     if (result.retCode==0){
-                        handleList(result.data.shopList);
-                        handleUser(result.data.user);
+                        window.location.href=result.data.redirectUrl;
+                    }else {
+                        $.toast(result.message);
                     }
                 }
             });

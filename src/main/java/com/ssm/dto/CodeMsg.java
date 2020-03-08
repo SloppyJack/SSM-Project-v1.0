@@ -36,6 +36,7 @@ public class CodeMsg {
     public static CodeMsg SHOP_STATUS_PASS= new CodeMsg(100004,"通过认证");
     public static CodeMsg NULL_SHOP_ID = new CodeMsg(100005,"ShopId为空");
     public static CodeMsg NULL_SHOP = new CodeMsg(100006,"店铺为空");
+    public static CodeMsg NULL_SHOPLIST = new CodeMsg(100007,"店铺列表为空");
 
     //商品类别业务 格式：101 xxx
     public static CodeMsg PRODUCT_CATEGORY_CREATE_SUCCESS = new CodeMsg(101000,"创建成功");
