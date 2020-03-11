@@ -88,4 +88,8 @@
         <!--/*.do是对所有以.do结尾的请求做处理，/*是对所有请求做处理-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/error/404.html</location>
+    </error-page>
 </web-app>

@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
     <!-- 配置SpringMVC -->
     <!-- 1.开启SpringMVC注解模式 -->
@@ -51,5 +51,29 @@
     </bean>-->
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.ssm.web" />
-
+    <!-- 5.权限拦截器 -->
+    <mvc:interceptors>
+        <!-- 校验是否已登录店家管理系统的拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/shopAdmin/**"/>
+            <bean id="ShopInterceptor" class="com.ssm.interceptor.shopAdmin.ShopLoginInterceptor"></bean>
+        </mvc:interceptor>
+        <!-- 校验是否对该店铺有操作权限 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/shopAdmin/**"/>
+            <!-- 如exclude-mapping标签报错，引入3.2xsd即可解决 -->
+            <!-- 商品列表页面 -->
+            <mvc:exclude-mapping path="/shopAdmin/shopList"/>
+            <mvc:exclude-mapping path="/shopAdmin/getShopList"/>
+            <!-- 商品注册页面 -->
+            <mvc:exclude-mapping path="/shopAdmin/getShopInitInfo"/>
+            <mvc:exclude-mapping path="/shopAdmin/registerShop"/>
+            <mvc:exclude-mapping path="/shopAdmin/shopOperation"/>
+            <!-- 商铺管理页面 -->
+            <mvc:exclude-mapping path="/shopAdmin/shopManagement"/>
+            <mvc:exclude-mapping path="/shopAdmin/getShopManagementInfo"/>
+            <bean id="ShopPermissionInterceptor" class="com.ssm.interceptor.shopAdmin.ShopPermissionInterceptor">
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

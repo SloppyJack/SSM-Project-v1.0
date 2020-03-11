@@ -95,14 +95,15 @@ public class ShopManagementController {
     @ResponseBody
     private Result getShopList(HttpServletRequest request){
         Map<String,Object> modelMap = new HashMap();
-        PersonInfo user = new PersonInfo();
-        user = (PersonInfo)request.getSession().getAttribute("user");
+        PersonInfo user = (PersonInfo)request.getSession().getAttribute("user");
         if (user == null || user.getUserId()== null)
             return Result.error(CodeMsg.NULL_SHOPLIST);
         try{
             Shop shopCondition = new Shop();
             shopCondition.setOwner(user);
             ShopExecution se = shopService.getShopListOfPage(shopCondition,0,100);
+            //列出店铺成功之后，将店铺放入session作为权限验证
+            request.getSession().setAttribute("shopList",se.getShopList());
             modelMap.put("shopList",se.getShopList());
             modelMap.put("user",user);
             return Result.success(modelMap);
