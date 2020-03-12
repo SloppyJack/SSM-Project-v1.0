@@ -62,6 +62,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/shopAdmin/**"/>
             <!-- 如exclude-mapping标签报错，引入3.2xsd即可解决 -->
+            <mvc:exclude-mapping path="/shopAdmin/index"/>
             <!-- 商品列表页面 -->
             <mvc:exclude-mapping path="/shopAdmin/shopList"/>
             <mvc:exclude-mapping path="/shopAdmin/getShopList"/>
